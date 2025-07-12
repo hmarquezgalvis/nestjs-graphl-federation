@@ -1,8 +1,14 @@
+import { config } from 'dotenv';
+config();
+
 import { NestFactory } from '@nestjs/core';
+
 import { AppModule } from './app.module';
+import { environmentConfig } from './config/environment.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 4000);
+  await app.listen(environmentConfig.port);
 }
+
 void bootstrap();

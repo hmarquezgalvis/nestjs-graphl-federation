@@ -8,6 +8,7 @@ import {
 import { ApiUsersController } from './api.users.controller';
 import { ApiUsersService } from './api.users.service';
 import { TestResolver } from './test/test.resolver';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
@@ -16,7 +17,9 @@ import { TestResolver } from './test/test.resolver';
       autoSchemaFile: {
         federation: 2,
       },
-      debug: true,
+      debug: false,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
   controllers: [ApiUsersController],

@@ -1,5 +1,6 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { Test } from './test.entity';
+import { getTestMessage } from '@libs/shared';
 
 @Resolver(() => Test)
 export class TestResolver {
@@ -7,6 +8,8 @@ export class TestResolver {
 
   @Query(() => Test)
   getTest(): Test {
-    return { message: 'Hello from Test!' };
+    const message: string = getTestMessage();
+
+    return { message };
   }
 }
