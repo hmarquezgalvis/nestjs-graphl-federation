@@ -20,6 +20,15 @@
         "tsConfigPath": "apps/api/tsconfig.app.json"
       }
     },
+    "api.employees": {
+      "type": "application",
+      "root": "apps/api.employees",
+      "entryFile": "main",
+      "sourceRoot": "apps/api.employees/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api.employees/tsconfig.app.json"
+      }
+    },
     "api.users": {
       "type": "application",
       "root": "apps/api.users",
