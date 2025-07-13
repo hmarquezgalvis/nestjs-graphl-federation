@@ -1,8 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { User } from './user.external';
+import { UserExternal } from '../externals/user.external';
 
-@ObjectType()
-export class Employee {
+@ObjectType('Employee')
+export class EmployeeOutput {
   @Field()
   id: string;
 
@@ -16,5 +16,5 @@ export class Employee {
   department: string;
 
   @Field({ nullable: true })
-  user?: User;
+  user?: UserExternal;
 }

@@ -1,9 +1,9 @@
 import { Directive, Field, ID, ObjectType } from '@nestjs/graphql';
 
-@ObjectType()
+@ObjectType('User')
 @Directive('@extends')
 @Directive('@key(fields: "id")')
-export class User {
+export class UserExternal {
   @Field(() => ID)
   @Directive('@external')
   id: string;

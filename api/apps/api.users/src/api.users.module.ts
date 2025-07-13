@@ -8,11 +8,10 @@ import {
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import appConfig from './config/app.config';
-import { ApiUsersController } from './api.users.controller';
-import { ApiUsersService } from './api.users.service';
-import { TestResolver } from './test/test.resolver';
-import { UserService } from './users/user.service';
-import { UsersResolver } from './users/user.resolver';
+import { TestResolver } from './presentation/graphql/resolvers/test.resolver';
+import { UserService } from './application/services/user.service';
+import { UsersResolver } from './presentation/graphql/resolvers/user.resolver';
+import { ApiUsersController } from './presentation/controllers';
 
 @Module({
   imports: [
@@ -33,6 +32,6 @@ import { UsersResolver } from './users/user.resolver';
     }),
   ],
   controllers: [ApiUsersController],
-  providers: [ApiUsersService, UserService, TestResolver, UsersResolver],
+  providers: [UserService, TestResolver, UsersResolver],
 })
 export class ApiUsersModule {}

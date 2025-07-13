@@ -8,10 +8,9 @@ import {
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import appConfig from './config/app.config';
-import { ApiEmployeesController } from './api.employees.controller';
-import { ApiEmployeesService } from './api.employees.service';
-import { EmployeeResolver } from './graphql/employee.resolver';
-import { EmployeeService } from './graphql/employee.service';
+import { EmployeeService } from './application/services/employee.service';
+import { ApiEmployeesController } from './presentation/controllers/api.employees.controller';
+import { EmployeeResolver } from './presentation/graphql/resolvers/employee.resolver';
 
 @Module({
   imports: [
@@ -35,6 +34,6 @@ import { EmployeeService } from './graphql/employee.service';
     }),
   ],
   controllers: [ApiEmployeesController],
-  providers: [ApiEmployeesService, EmployeeService, EmployeeResolver],
+  providers: [EmployeeService, EmployeeResolver],
 })
 export class ApiEmployeesModule {}

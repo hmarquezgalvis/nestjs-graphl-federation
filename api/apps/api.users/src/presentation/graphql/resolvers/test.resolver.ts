@@ -1,13 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { Test } from './test.entity';
 import { getTestMessage } from '@libs/shared';
+import { TestOutput } from '../outputs';
 
-@Resolver(() => Test)
+@Resolver(() => TestOutput)
 export class TestResolver {
   constructor() {}
 
-  @Query(() => Test)
-  getTest(): Test {
+  @Query(() => TestOutput, { name: 'test' })
+  getTest(): TestOutput {
     const message: string = getTestMessage();
 
     return { message };

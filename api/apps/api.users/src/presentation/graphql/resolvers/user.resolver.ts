@@ -1,13 +1,13 @@
 import { Query, Resolver, ResolveReference } from '@nestjs/graphql';
-import { User } from './user.entity';
-import { UserService } from './user.service';
+import { UserOutput } from '../outputs';
+import { UserService } from 'apps/api.users/src/application/services/user.service';
 
-@Resolver(() => User)
+@Resolver(() => UserOutput)
 export class UsersResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Query(() => [User], { name: 'users' })
-  getUserList(): User[] {
+  @Query(() => [UserOutput], { name: 'users' })
+  getUserList(): UserOutput[] {
     return this.userService.getList();
   }
 
@@ -15,7 +15,7 @@ export class UsersResolver {
   resolveReference(reference: {
     __typename: string;
     id: string;
-  }): User | undefined {
+  }): UserOutput | undefined {
     return this.userService.getById(reference.id);
   }
 }
