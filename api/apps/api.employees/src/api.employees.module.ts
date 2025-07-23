@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -27,9 +28,21 @@ import { EmployeeResolver } from './presentation/graphql/resolvers/employee.reso
         autoSchemaFile: {
           federation: 2,
         },
-        debug: false,
+        context: ({ req, res }) => ({
+          req: req as Request,
+          res: res as Response,
+        }),
+        formatError: (formatted, error: GraphQLError) => {
+          return {
+            message: error?.message,
+            code: error.originalError?.name || formatted.extensions?.code,
+            timestamp: new Date().toISOString(),
+          };
+        },
+        introspection: true,
         playground: false,
         plugins: [ApolloServerPluginLandingPageLocalDefault()],
+        debug: false,
       }),
     }),
   ],

@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -39,10 +40,10 @@ import { CreateUserUseCase } from '../application/users/create-user';
           req: req as Request,
           res: res as Response,
         }),
-        formatError: (error) => {
+        formatError: (formatted, error: GraphQLError) => {
           return {
-            message: error.message,
-            code: error.extensions?.code,
+            message: error?.message,
+            code: error.originalError?.name || formatted.extensions?.code,
             timestamp: new Date().toISOString(),
           };
         },
