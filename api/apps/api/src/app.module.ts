@@ -21,9 +21,11 @@ import { AppService } from './app.service';
       driver: ApolloGatewayDriver,
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
+        autoSchemaFile: true,
         server: {
           playground: false,
           introspection: true,
+          installSubscriptionHandlers: true,
           plugins: [ApolloServerPluginLandingPageLocalDefault()],
         },
         gateway: {
