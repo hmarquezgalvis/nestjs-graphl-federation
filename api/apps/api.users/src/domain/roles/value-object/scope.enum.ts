@@ -1,0 +1,6 @@
+export enum Scope {
+  GLOBAL = 'GLOBAL',
+  COMPANY = 'COMPANY',
+  DEPARTMENT = 'DEPARTMENT',
+  BRANCH = 'BRANCH',
+}

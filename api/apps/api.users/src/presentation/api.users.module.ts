@@ -14,12 +14,13 @@ import {
 
 import appConfig from './config/app.config';
 import { TestResolver } from './graphql/resolvers/test.resolver';
-import { UserService } from '../application/services/user.service';
 import { UsersResolver } from './graphql/resolvers/user.resolver';
 import { ApiUsersController } from './controllers';
 import { UserRepository } from '../domain/users/interfaces/user.repository';
 import { InMemoryUserRepository } from '../infrastructure/persistence/in-memory-user.repository';
-import { CreateUserUseCase } from '../application/users/create-user';
+import { CreateUserUseCase } from '../application/users/create/create-user';
+import { UserFindByIdUseCase } from '../application/users/finder/user-find-by-id';
+import { UserFindUseCase } from '../application/users/finder/user-find';
 
 @Module({
   imports: [
@@ -67,10 +68,11 @@ import { CreateUserUseCase } from '../application/users/create-user';
   ],
   controllers: [ApiUsersController],
   providers: [
-    UserService,
     TestResolver,
     UsersResolver,
     CreateUserUseCase,
+    UserFindByIdUseCase,
+    UserFindUseCase,
     {
       provide: UserRepository,
       useClass: InMemoryUserRepository,

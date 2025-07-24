@@ -11,7 +11,9 @@ describe('ApiEmployeesController', () => {
       providers: [ApiEmployeesService],
     }).compile();
 
-    apiEmployeesController = app.get<ApiEmployeesController>(ApiEmployeesController);
+    apiEmployeesController = app.get<ApiEmployeesController>(
+      ApiEmployeesController,
+    );
   });
 
   describe('root', () => {
