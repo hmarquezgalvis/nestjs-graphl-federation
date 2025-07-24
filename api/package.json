@@ -1,5 +1,5 @@
 {
-  "name": "@api",
+  "name": "rocks.marquez.api",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -15,6 +15,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:bdd": "NODE_NO_WARNINGS=1 cucumber-js",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/api/test/jest-e2e.json"
@@ -37,6 +38,8 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "@cucumber/pretty-formatter": "^2.0.1",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
     "@nestjs/cli": "^11.0.0",

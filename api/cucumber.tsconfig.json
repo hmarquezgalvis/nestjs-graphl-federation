@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@libs/shared/*": ["libs/shared/src/*"],
+      "@libs/*": ["libs/*/src"]
+    }
+  },
+  "include": [
+    "test/features/**/*.ts",
+    "test/features/**/*.feature",
+    "libs/**/*.ts"
+  ]
+}
