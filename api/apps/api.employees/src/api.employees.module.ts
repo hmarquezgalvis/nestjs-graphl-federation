@@ -9,9 +9,11 @@ import {
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import appConfig from './config/app.config';
-import { EmployeeService } from './application/services/employee.service';
 import { ApiEmployeesController } from './presentation/controllers/api.employees.controller';
 import { EmployeeResolver } from './presentation/graphql/resolvers/employee.resolver';
+import { EmployeeRepository } from './domain/interfaces/employee.repository';
+import { InMemoryEmployeeRepository } from './infrastructure/persistence/in-memory-employee.repository';
+import { EmployeeFind } from './application/finder/employee-find';
 
 @Module({
   imports: [
@@ -47,6 +49,13 @@ import { EmployeeResolver } from './presentation/graphql/resolvers/employee.reso
     }),
   ],
   controllers: [ApiEmployeesController],
-  providers: [EmployeeService, EmployeeResolver],
+  providers: [
+    EmployeeResolver,
+    EmployeeFind,
+    {
+      provide: EmployeeRepository,
+      useClass: InMemoryEmployeeRepository,
+    },
+  ],
 })
 export class ApiEmployeesModule {}

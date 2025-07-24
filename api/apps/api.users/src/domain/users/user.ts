@@ -1,5 +1,5 @@
-import { RoleID } from '@libs/shared/domain/value-objects';
-import { CompanyContext, UserID, UserName } from './value-objects';
+import { RoleID, UserID } from '@libs/shared/domain/value-objects';
+import { CompanyContext, UserName } from './value-objects';
 import { UserAlreadyHasRole } from './exceptions';
 
 /**

@@ -1,5 +1,5 @@
+import { UserID } from '@libs/shared/domain/value-objects';
 import { User } from '../user';
-import { UserID } from '../value-objects';
 
 export abstract class UserRepository {
   abstract save(newUser: User): void;

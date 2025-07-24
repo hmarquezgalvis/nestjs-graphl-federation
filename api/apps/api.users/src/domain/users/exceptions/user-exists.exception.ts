@@ -1,4 +1,4 @@
-import { UserID } from '../value-objects';
+import { UserID } from '@libs/shared/domain/value-objects';
 
 export class UserAlreadyExists extends Error {
   constructor(userId: UserID) {

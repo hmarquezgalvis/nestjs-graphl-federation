@@ -1,13 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { EmployeeOutput } from '../outputs/employee.output';
-import { EmployeeService } from 'apps/api.employees/src/application/services/employee.service';
+import { EmployeeFind } from 'apps/api.employees/src/application/finder/employee-find';
 
 @Resolver(() => EmployeeOutput)
 export class EmployeeResolver {
-  constructor(private readonly employeeService: EmployeeService) {}
+  constructor(private readonly employeeFind: EmployeeFind) {}
 
   @Query(() => [EmployeeOutput], { name: 'employees' })
   getEmployeeList(): EmployeeOutput[] {
-    return this.employeeService.getList();
+    return this.employeeFind.execute();
   }
 }

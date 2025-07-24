@@ -1,11 +1,8 @@
 import { User } from '../../domain/users/user';
-import {
-  CompanyContext,
-  UserID,
-  UserName,
-} from '../../domain/users/value-objects';
+import { CompanyContext, UserName } from '../../domain/users/value-objects';
 import { UserRepository } from '../../domain/users/interfaces/user.repository';
 import { RoleID } from '@libs/shared';
+import { UserID } from '@libs/shared/domain/value-objects';
 
 export class InMemoryUserRepository extends UserRepository {
   private users: User[] = [

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from 'apps/api.users/src/domain/users/interfaces/user.repository';
-import { UserID } from 'apps/api.users/src/domain/users/value-objects';
 import { UserNotExists } from '../../../domain/users/exceptions';
+import { UserID } from '@libs/shared/domain/value-objects';
 
 @Injectable()
 export class UserFindByIdUseCase {

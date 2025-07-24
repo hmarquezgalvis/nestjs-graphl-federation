@@ -1,4 +1,4 @@
-import { UserID } from 'apps/api.users/src/domain/users/value-objects';
+import { UserID } from '@libs/shared/domain/value-objects';
 
 export class UserNotExists extends Error {
   constructor(userId: UserID) {
